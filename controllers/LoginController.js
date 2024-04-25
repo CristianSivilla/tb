@@ -1,3 +1,5 @@
+// LoginController.js
+const jwt = require('jsonwebtoken');
 const Usuario = require('../models/Usuario');
 
 async function iniciarSesion(req, res) {
@@ -6,13 +8,15 @@ async function iniciarSesion(req, res) {
     try {
         const usuario = await Usuario.obtenerUsuarioPorCorreo(correo);
         if (!usuario || usuario.contrasena !== contrasena) {
-            return res.status(401).json({ error: 'error en las creedenciales' });
+            return res.status(401).json({ error: 'Credenciales inválidas' });
         }
 
-        res.json({ mensaje: 'Bienvenido', usuario });
+        const token = jwt.sign({ usuarioId: usuario.id }, 'tu_secreto');
+
+        res.json({ mensaje: 'Inicio de sesión exitoso', token });
     } catch (error) {
-        console.error('Error en el inicio sesión:', error);
-        res.status(500).json({ error: 'Error en el servidor' });
+        console.error('Error al iniciar sesión:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
     }
 }
 
