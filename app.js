@@ -4,7 +4,7 @@ require('dotenv').config();
 
 app.use(express.json());
 
-const registroRoutes = require('./routes/registroRoutes');
+const registroRoutes = require('./routes/Routes');
 app.use('/api', registroRoutes);
 
 const PORT = process.env.PORT || 3000;
