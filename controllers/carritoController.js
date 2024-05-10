@@ -23,4 +23,18 @@ carritoController.mostrarCarrito = (req, res) => {
   });
 };
 
+
+carritoController.eliminarProducto = async (req, res) => {
+  try {
+    const productoId = req.params.id;
+    await Carrito.eliminarProducto(productoId);
+    res.json({ mensaje: 'Producto eliminado del carrito correctamente' });
+  } catch (error) {
+    console.error('Error al eliminar el producto del carrito:', error);
+    res.status(500).json({ error: 'Error al eliminar el producto del carrito' });
+  }
+};
+
+
+
 module.exports = carritoController;

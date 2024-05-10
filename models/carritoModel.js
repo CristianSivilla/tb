@@ -22,4 +22,14 @@ Carrito.obtenerProductosPorUsuarioId = (usuarioId, callback) => {
   });
 };
 
+
+Carrito.eliminarProducto = async (productoId) => {
+  try {
+    await connection.query('DELETE FROM carrito WHERE id = ?', [productoId]);
+  } catch (error) {
+    throw error;
+  }
+};
+
+
 module.exports = Carrito;

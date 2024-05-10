@@ -1,12 +1,13 @@
 const express = require('express');
-const corsMiddleware = require('./mw/corsMiddleware'); 
+
+const cors = require('cors'); 
 
 const app = express();
 
+app.use(cors());
 
 require('dotenv').config();
 
-app.use(corsMiddleware);
 
 app.use(express.json());
 
