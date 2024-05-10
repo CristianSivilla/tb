@@ -1,4 +1,3 @@
-// LoginController.js
 const jwt = require('jsonwebtoken');
 const Usuario = require('../models/Usuario');
 
