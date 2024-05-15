@@ -1,9 +1,9 @@
-const db = require('../db');
+const sql = require('../db');
 
 class Usuario {
     static registrarUsuario(usuario) {
         return new Promise((resolve, reject) => {
-            db.query('INSERT INTO usuarios SET ?', usuario, (error, results) => {
+            sql.query('INSERT INTO usuarios SET ?', usuario, (error, results) => {
                 if (error) {
                     reject(error);
                     return;
@@ -15,7 +15,7 @@ class Usuario {
 
     static obtenerUsuarioPorCorreo(correo) {
         return new Promise((resolve, reject) => {
-            db.query('SELECT * FROM usuarios WHERE correo = ?', correo, (error, results) => {
+            sql.query('SELECT * FROM usuarios WHERE correo = ?', correo, (error, results) => {
                 if (error) {
                     reject(error);
                     return;

@@ -1,4 +1,3 @@
-
 const Carrito = require('../models/carritoModel');
 
 const carritoController = {};

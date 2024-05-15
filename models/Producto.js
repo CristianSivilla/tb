@@ -1,8 +1,8 @@
-const db = require('../db');
+const sql = require('../db');
 
 async function obtenerProductosPorCategoria(categoria) {
     const consulta = 'SELECT * FROM productos WHERE categoria = ?';
-    const [productos] = await db.query(consulta, [categoria]);
+    const [productos] = await sql.query(consulta, [categoria]);
     return productos;
 }
 
